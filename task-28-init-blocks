@@ -1,0 +1,49 @@
+package ru.oop.task28;
+
+class InitOrderDemo {
+    private int id = 1;
+    
+    {
+        System.out.println("Блок инициализации экземпляра (1) id = " + id);
+    }
+    
+    static {
+        System.out.println("Статический блок инициализации (1)");
+    }
+    
+    {
+        System.out.println("Блок инициализации экземпляра (2) id = " + id);
+    }
+    
+    public InitOrderDemo(int id) {
+        this.id = id;
+        System.out.println("Конструктор, id = " + id);
+    }
+    
+    static {
+        System.out.println("Статический блок инициализации (2)");
+    }
+    
+    {
+        System.out.println("Блок инициализации экземпляра (3) id = " + id);
+    }
+}
+
+public class StaticInitBlocksOrderDemo {
+    public static void main(String[] args) {
+        System.out.println("При загрузке класса:");
+        System.out.println("- Выполняются все статические блоки (в порядке объявления)");
+        System.out.println("- Выполняются все статические поля");
+        
+        System.out.println("\nПри создании объекта:");
+        System.out.println("- Выполняются все блоки инициализации (в порядке объявления)");
+        System.out.println("- Выполняются все поля экземпляра");
+        System.out.println("- Выполняется конструктор");
+        
+        System.out.println("\nПример выполнения:");
+        new InitOrderDemo(100);
+        
+        System.out.println("\nЕщё один объект (статические блоки не выполняются повторно):");
+        new InitOrderDemo(200);
+    }
+}
