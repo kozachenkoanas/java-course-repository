@@ -1,0 +1,20 @@
+package ru.oop.task5;
+
+public class InstanceofDemo {
+    public static void main(String[] args) {
+        String text = "hello";
+        Object obj = 123;
+        if (text instanceof String) {
+            System.out.println("text - это действительно string");
+        }
+        if (obj instanceof Integer) {
+            System.out.println("obj содержит целое число");
+        }
+        String nullStr = null;
+        if (nullStr instanceof String) {
+            System.out.println("Это не выполнится");
+        } else {
+            System.out.println("null instanceof string всегда дает false");
+        }
+    }
+}
