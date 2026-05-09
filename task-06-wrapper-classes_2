@@ -1,0 +1,31 @@
+package ru.oop.task6;
+
+public class BooleanCreationDemo {
+    public static void main(String[] args) {
+        Boolean b1 = new Boolean(true);
+        Boolean b2 = new Boolean(false);
+        System.out.println("new Boolean(true): " + b1);
+        System.out.println("new Boolean(false): " + b2);
+        
+        Boolean b3 = new Boolean("true");
+        Boolean b4 = new Boolean("false");
+        System.out.println("new Boolean(\"true\"): " + b3);
+        System.out.println("new Boolean(\"false\"): " + b4);
+        
+        Boolean b5 = Boolean.valueOf(true);
+        Boolean b6 = Boolean.valueOf(false);
+        System.out.println("Boolean.valueOf(true): " + b5);
+        System.out.println("Boolean.valueOf(false): " + b6);
+        
+        Boolean b7 = Boolean.valueOf("true");
+        System.out.println("Boolean.valueOf(\"true\"): " + b7);
+        
+        Boolean b8 = true;
+        Boolean b9 = false;
+        System.out.println("Автоупаковка true: " + b8);
+        System.out.println("Автоупаковка false: " + b9);
+        
+        boolean primitive = Boolean.parseBoolean("true");
+        System.out.println("Boolean.parseBoolean(\"true\"): " + primitive);
+    }
+}
