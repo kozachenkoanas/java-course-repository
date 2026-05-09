@@ -1,0 +1,31 @@
+package ru.oop.task5;
+
+public class OperatorsDemo {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3};
+        int resultGroup = (5 + 2) * 2;
+
+        int x = 10;
+        System.out.println("Постфиксный: " + x++);
+        System.out.println("Префиксный: " + ++x);
+        boolean isJavaCool = true;
+        System.out.println("Отрицание: " + !isJavaCool);
+
+        int math = 10 + 20 / 2;
+        int ost = 10 % 3;
+
+        boolean compare = (10 >= 5) && (5 != 0);
+
+        boolean logic = (true || false) && true;
+
+        int age = 19;
+        String status = (age >= 18) ? "Взрослый" : "Ребенок";
+
+        String name = "Анастасия";
+        name += " Козаченко";
+        System.out.println(name + " учится Java");
+
+        int a = 5;
+        a *= 2;
+    }
+}
