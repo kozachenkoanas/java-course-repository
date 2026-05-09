@@ -1,0 +1,28 @@
+package ru.oop.task6;
+
+public class DecodeMethodDemo {
+    public static void main(String[] args) {
+        Integer dec1 = Integer.decode("123");
+        System.out.println("decode(\"123\") = " + dec1);
+        
+        Integer hex1 = Integer.decode("0xFF");
+        Integer hex2 = Integer.decode("#FF");
+        System.out.println("decode(\"0xFF\") = " + hex1);
+        System.out.println("decode(\"#FF\") = " + hex2);
+        
+        Integer oct = Integer.decode("077");
+        System.out.println("decode(\"077\") = " + oct);
+        
+        Integer negative = Integer.decode("-123");
+        System.out.println("decode(\"-123\") = " + negative);
+        
+        Long longVal = Long.decode("0x7FFFFFFFFFFFFFFF");
+        System.out.println("Long.decode(\"0x7FFFFFFFFFFFFFFF\") = " + longVal);
+        
+        try {
+            Integer invalid = Integer.decode("12AB");
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка при decode(\"12AB\"): " + e.getMessage());
+        }
+    }
+}
