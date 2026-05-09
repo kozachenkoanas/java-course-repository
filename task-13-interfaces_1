@@ -1,0 +1,27 @@
+package ru.oop.task13;
+
+interface SmartDevice {
+    void turnOn();
+    default void reset() {
+        System.out.println("сброс настроек по умолчанию");
+    }
+    static void showVersion() {
+        System.out.println("версия прошивки: 1.0.4");
+    }
+}
+
+class Lamp implements SmartDevice {
+    @Override
+    public void turnOn() {
+        System.out.println("лампочка горит");
+    }
+}
+
+public class DefaultStaticMethodDemo {
+    public static void main(String[] args) {
+        Lamp myLamp = new Lamp();
+        myLamp.turnOn();
+        myLamp.reset();
+        SmartDevice.showVersion();
+    }
+}
