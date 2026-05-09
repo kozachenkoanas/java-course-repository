@@ -1,0 +1,57 @@
+package ru.oop.task24;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class TryWithoutCatchDemo {
+    public static void main(String[] args) {
+        System.out.println("Конструкции try без catch\n");
+        
+        System.out.println("1. try с finally (без catch):");
+        System.out.println("   Такая конструкция существует и используется");
+        
+        try {
+            System.out.println("   Выполняем код, который может бросить исключение");
+            int result = 10 / 2;
+            System.out.println("   Результат: " + result);
+        } finally {
+            System.out.println("   finally блок выполнится в любом случае");
+        }
+        
+        System.out.println("\n2. try-with-resources (Java 7+):");
+        System.out.println("   Тоже не требует catch, если исключения не обрабатываются");
+        
+        try (FileInputStream fis = new FileInputStream("nonexistent.txt")) {
+            System.out.println("   Файл открыт");
+        } catch (IOException e) {
+            System.out.println("   Но IOException нужно обработать");
+        }
+        
+        System.out.println("\n3. Что нельзя:");
+        System.out.println("   try { } - нельзя (нужен хотя бы catch или finally)");
+        System.out.println("   try { } catch (Exception e) { } - можно");
+        System.out.println("   try { } finally { } - можно");
+        System.out.println("   try { } catch (Exception e) { } finally { } - можно");
+        
+        System.out.println("\nКогда используется try-finally без catch:");
+        System.out.println("- Освобождение ресурсов (закрытие файлов, соединений)");
+        System.out.println("- Когда исключения не критичны и не требуют обработки");
+        System.out.println("- В сочетании с try-with-resources");
+        
+        methodWithTryFinally();
+    }
+    
+    static void methodWithTryFinally() {
+        try {
+            System.out.println("\nПример из реального кода:");
+            System.out.println("lock.lock();");
+            System.out.println("try {");
+            System.out.println("    // работа с общим ресурсом");
+            System.out.println("} finally {");
+            System.out.println("    lock.unlock();");
+            System.out.println("}");
+        } finally {
+            // имитация finally
+        }
+    }
+}
