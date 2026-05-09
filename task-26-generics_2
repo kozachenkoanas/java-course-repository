@@ -1,0 +1,32 @@
+package ru.oop.task26;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class InstanceofGenericDemo {
+    public static void main(String[] args) {
+        System.out.println("instanceof с параметризованными классами\n");
+        
+        List<String> stringList = new ArrayList<>();
+        List<Integer> intList = new ArrayList<>();
+        
+        System.out.println("stringList instanceof List: " + (stringList instanceof List));
+        System.out.println("intList instanceof List: " + (intList instanceof List));
+        
+        System.out.println("\nВажно: нельзя проверить конкретный параметр типа:");
+        System.out.println("list instanceof List<String> - ОШИБКА КОМПИЛЯЦИИ");
+        System.out.println("Из-за стирания типов (type erasure) информация о параметре");
+        System.out.println("типа недоступна во время выполнения");
+        
+        System.out.println("\nСтирание типов (Type Erasure):");
+        System.out.println("Компилятор заменяет:");
+        System.out.println("- List<String> -> List");
+        System.out.println("- T -> Object или верхнюю границу");
+        System.out.println("Поэтому instanceof не видит разницы между List<String> и List<Integer>");
+        
+        System.out.println("\nОбходные пути:");
+        System.out.println("1. Использовать метку класса: stringList.getClass() == intList.getClass()");
+        System.out.println("2. Проверять элементы: if (stringList.get(0) instanceof String)");
+        System.out.println("3. Использовать рефлексию (с осторожностью)");
+    }
+}
