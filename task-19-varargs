@@ -1,0 +1,28 @@
+package ru.oop.task19;
+
+public class VarargsDemo {
+    public void display(int... numbers) {
+        System.out.println("int varargs, количество: " + numbers.length);
+        for (int n : numbers) System.out.print(n + " ");
+        System.out.println();
+    }
+    
+    public void display(String... strings) {
+        System.out.println("String varargs, количество: " + strings.length);
+        for (String s : strings) System.out.print(s + " ");
+        System.out.println();
+    }
+    
+    public void display(boolean flag, int... numbers) {
+        System.out.println("boolean + int varargs, флаг: " + flag);
+        for (int n : numbers) System.out.print(n + " ");
+        System.out.println();
+    }
+    
+    public static void main(String[] args) {
+        VarargsDemo demo = new VarargsDemo();
+        demo.display(1, 2, 3, 4);
+        demo.display("A", "B", "C");
+        demo.display(true, 10, 20);
+    }
+}
