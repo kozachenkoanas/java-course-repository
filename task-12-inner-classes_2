@@ -1,0 +1,22 @@
+package ru.oop.task12;
+
+interface Messenger {
+    void sendMessage(String text);
+    class Validator {
+        public static boolean isValid(String text) {
+            return text != null && !text.isEmpty();
+        }
+        public void printInfo() {
+            System.out.println("валидатор готов к работе.");
+        }
+    }
+}
+
+public class NestedClassInInterfaceDemo {
+    public static void main(String[] args) {
+        boolean result = Messenger.Validator.isValid("хай");
+        System.out.println("результат проверки: " + result);
+        Messenger.Validator myVal = new Messenger.Validator();
+        myVal.printInfo();
+    }
+}
