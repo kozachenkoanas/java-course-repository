@@ -1,0 +1,29 @@
+package ru.oop.task22;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class TryWithResourcesDemo {
+    public static void main(String[] args) {
+        System.out.println("=== AutoCloseable и try-with-resources ===\n");
+        
+        System.out.println("Интерфейс AutoCloseable гарантирует, что ресурс будет закрыт автоматически");
+        System.out.println("Содержит единственный метод close()\n");
+        
+        System.out.println("Зачем нужен AutoCloseable:");
+        System.out.println("1. Автоматическое освобождение ресурсов");
+        System.out.println("2. Предотвращает утечки памяти");
+        System.out.println("3. Упрощает код (не нужен finally)\n");
+        
+        System.out.println("=== Пример с try-with-resources ===");
+        
+        try (FileInputStream fis = new FileInputStream("test.txt")) {
+            int data = fis.read();
+            System.out.println("Прочитано: " + data);
+        } catch (IOException e) {
+            System.out.println("Файл не найден или ошибка чтения: " + e.getMessage());
+        }
+        
+        System.out.println("\nРесурс закрылся автоматически, finally не нужен!");
+    }
+}
