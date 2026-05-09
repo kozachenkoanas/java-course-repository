@@ -1,0 +1,53 @@
+package ru.oop.task30;
+
+class NumberPrinter {
+    public void printNum(Integer i) {
+        System.out.printf("Integer = %d%n", i);
+    }
+    
+    public void printNum(int i) {
+        System.out.printf("int = %d%n", i);
+    }
+    
+    public void printNum(Float f) {
+        System.out.printf("Float = %.4f%n", f);
+    }
+    
+    public void printNum(Number n) {
+        System.out.println("Number=" + n);
+    }
+}
+
+public class PolymorphismDemo {
+    public static void main(String[] args) {
+        System.out.println("Почему в цикле for и при прямых вызовах разные результаты?\n");
+        
+        NumberPrinter printer = new NumberPrinter();
+        Number[] num = {new Integer(1), 11, 1.11f, 11.11};
+        
+        System.out.println("Цикл for (1):");
+        for (Number n : num) {
+            printer.printNum(n);
+        }
+        
+        System.out.println("\nПрямые вызовы (2):");
+        printer.printNum(new Integer(1));
+        printer.printNum(11);
+        printer.printNum(1.11f);
+        printer.printNum(11.11);
+        
+        System.out.println("\nОбъяснение:");
+        System.out.println("В цикле for тип переменной n - Number (объявлен как Number[])");
+        System.out.println("Выбирается метод printNum(Number n), так как это наиболее");
+        System.out.println("подходящий метод для типа Number во время компиляции");
+        
+        System.out.println("При прямых вызовах компилятор видит точный тип:");
+        System.out.println("- new Integer(1) -> Integer, выбирается printNum(Integer)");
+        System.out.println("- 11 -> int, выбирается printNum(int)");
+        System.out.println("- 1.11f -> float, выбирается printNum(Float) (автоупаковка)");
+        System.out.println("- 11.11 -> double, выбирается printNum(Number)");
+        
+        System.out.println("\nВывод: выбор перегруженного метода происходит");
+        System.out.println("НА ЭТАПЕ КОМПИЛЯЦИИ на основе типа ссылки, а не объекта");
+    }
+}
