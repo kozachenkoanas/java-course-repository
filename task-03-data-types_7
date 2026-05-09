@@ -1,0 +1,18 @@
+package ru.oop.task3;
+
+public class ByteCastAnalysis {
+    public static void main(String[] args) {
+        int a = 120;
+        System.out.println("int a = 120;");
+        System.out.println("byte b = a + 10;      // ОШИБКА КОМПИЛЯЦИИ");
+        System.out.println("byte c = (byte)(a + 10); // c = " + (byte)(a + 10));
+        System.out.println("byte d = a + 1;       // ОШИБКА КОМПИЛЯЦИИ");
+        System.out.println();
+        System.out.println("byte c = (byte)(a + 10) = " + (byte)(a + 10));
+        System.out.println("byte d = (byte)(a + 1) = " + (byte)(a + 1));
+        System.out.println();
+        System.out.println("Объяснение: a+10=130 выходит за пределы byte (-128..127)");
+        System.out.println("130 - 256 = -126, поэтому c = -126");
+        System.out.println("Для a+1=121 нужно явное приведение, хотя 121 входит в диапазон byte");
+    }
+}
