@@ -1,0 +1,9 @@
+package ru.oop.task11;
+
+public class StringOverloadDemo {
+    public static void main(String[] args) {
+        System.out.println(5 + 5 + " - это десять");
+        System.out.println("Результат: " + 5 + 5);
+        System.out.println("Результат со скобками: " + (5 + 5));
+    }
+}
