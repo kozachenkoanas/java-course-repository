@@ -1,0 +1,27 @@
+package ru.oop.task9;
+
+public class FinalFieldInitDemo {
+    public final int a;
+    
+    public FinalFieldInitDemo() {
+        this.a = 10;
+    }
+    
+    public FinalFieldInitDemo(int value) {
+        this.a = value;
+    }
+    
+    public FinalFieldInitDemo(String value) {
+        this(Integer.parseInt(value));
+    }
+    
+    public static void main(String[] args) {
+        FinalFieldInitDemo obj1 = new FinalFieldInitDemo();
+        FinalFieldInitDemo obj2 = new FinalFieldInitDemo(25);
+        FinalFieldInitDemo obj3 = new FinalFieldInitDemo("100");
+        
+        System.out.println("obj1.a = " + obj1.a);
+        System.out.println("obj2.a = " + obj2.a);
+        System.out.println("obj3.a = " + obj3.a);
+    }
+}
