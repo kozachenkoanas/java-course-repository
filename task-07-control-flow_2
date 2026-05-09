@@ -1,0 +1,50 @@
+package ru.oop.task7;
+
+public class SwitchTypesDemo {
+    enum Day { MON, TUE, WED, THU, FRI, SAT, SUN }
+    
+    public static void main(String[] args) {
+        int intVal = 2;
+        switch (intVal) {
+            case 1: System.out.println("int: один"); break;
+            case 2: System.out.println("int: два"); break;
+            default: System.out.println("int: другое");
+        }
+        
+        char charVal = 'B';
+        switch (charVal) {
+            case 'A': System.out.println("char: A"); break;
+            case 'B': System.out.println("char: B"); break;
+            default: System.out.println("char: другое");
+        }
+        
+        String strVal = "привет";
+        switch (strVal) {
+            case "hello": System.out.println("String: hello"); break;
+            case "привет": System.out.println("String: привет"); break;
+            default: System.out.println("String: другое");
+        }
+        
+        Day day = Day.WED;
+        switch (day) {
+            case MON: System.out.println("enum: понедельник"); break;
+            case WED: System.out.println("enum: среда"); break;
+            default: System.out.println("enum: другой день");
+        }
+        
+        byte byteVal = 3;
+        switch (byteVal) {
+            case 1: System.out.println("byte: один"); break;
+            case 2: System.out.println("byte: два"); break;
+            case 3: System.out.println("byte: три"); break;
+            default: System.out.println("byte: другое");
+        }
+        
+        short shortVal = 100;
+        switch (shortVal) {
+            case 50: System.out.println("short: пятьдесят"); break;
+            case 100: System.out.println("short: сто"); break;
+            default: System.out.println("short: другое");
+        }
+    }
+}
