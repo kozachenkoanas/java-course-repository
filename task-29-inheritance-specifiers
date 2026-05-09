@@ -1,0 +1,81 @@
+package ru.oop.task29;
+
+class A {
+    int a1;           // package-private
+    public int a2;    // public
+    protected int a3; // protected
+    private int a4;   // private
+    
+    void method1() {
+        System.out.println("method1 (package-private)");
+    }
+    
+    public void method2() {
+        System.out.println("method2 (public)");
+    }
+    
+    protected void method3() {
+        System.out.println("method3 (protected)");
+    }
+    
+    private void method4() {
+        System.out.println("method4 (private)");
+    }
+    
+    public void showFields() {
+        System.out.println("a1=" + a1 + ", a2=" + a2 + ", a3=" + a3 + ", a4=" + a4);
+    }
+}
+
+class B extends A {
+    public void testAccess() {
+        System.out.println("В классе B (наследник A):");
+        // System.out.println(a4); // ОШИБКА! private не виден
+        a1 = 1;
+        a2 = 2;
+        a3 = 3;
+        method1();
+        method2();
+        method3();
+        // method4(); // ОШИБКА! private не виден
+    }
+}
+
+class C extends B {
+    public void testAccess() {
+        System.out.println("В классе C (наследник B):");
+        a1 = 4;
+        a2 = 5;
+        a3 = 6;
+        method1();
+        method2();
+        method3();
+    }
+}
+
+public class InheritanceSpecifiersDemo {
+    public static void main(String[] args) {
+        System.out.println("Изменение спецификаторов при наследовании\n");
+        
+        System.out.println("Таблица видимости:");
+        System.out.println("┌─────────────┬────────┬──────────┬───────────┬────────────┐");
+        System.out.println("│ Модификатор │ Тот же │ Тот же   │ Наследник │ Любой      │");
+        System.out.println("│             │ класс  │ пакет    │           │ пакет      │");
+        System.out.println("├─────────────┼────────┼──────────┼───────────┼────────────┤");
+        System.out.println("│ private     │   +    │    -     │     -     │     -      │");
+        System.out.println("│ (default)   │   +    │    +     │     +     │     -      │");
+        System.out.println("│ protected   │   +    │    +     │     +     │     -      │");
+        System.out.println("│ public      │   +    │    +     │     +     │     +      │");
+        System.out.println("└─────────────┴────────┴──────────┴───────────┴────────────┘");
+        
+        System.out.println("\nПроверка:");
+        A objA = new A();
+        objA.showFields();
+        
+        B objB = new B();
+        objB.testAccess();
+        
+        C objC = new C();
+        objC.testAccess();
+    }
+}
