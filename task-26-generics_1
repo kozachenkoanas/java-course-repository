@@ -1,0 +1,70 @@
+package ru.oop.task26;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Animal {
+    public void sound() { System.out.println("Животное издаёт звук"); }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() { System.out.println("Собака лает"); }
+    public void bark() { System.out.println("Гав-гав"); }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() { System.out.println("Кошка мяукает"); }
+}
+
+public class WildcardDemo {
+    public static void main(String[] args) {
+        System.out.println("Оператор instanceof с параметризованными классами\n");
+        
+        List<String> stringList = new ArrayList<>();
+        List<Integer> intList = new ArrayList<>();
+        
+        System.out.println("stringList instanceof List: " + (stringList instanceof List));
+        System.out.println("intList instanceof List: " + (intList instanceof List));
+        
+        System.out.println("\nКонструкции <? extends T> и <? super T>\n");
+        
+        System.out.println("<? extends T> (Producer Extends):");
+        System.out.println("- Можно читать как T");
+        System.out.println("- Нельзя добавлять (кроме null)");
+        
+        List<Dog> dogs = new ArrayList<>();
+        dogs.add(new Dog());
+        dogs.add(new Dog());
+        
+        List<Animal> animals = new ArrayList<>();
+        animals.add(new Animal());
+        
+        System.out.println("\nПример с extends:");
+        printAnimals(dogs);
+        
+        System.out.println("\n<? super T> (Consumer Super):");
+        System.out.println("- Можно добавлять объекты типа T");
+        System.out.println("- При чтении получаем Object");
+        
+        addDog(animals);
+        addDog(dogs);
+        
+        System.out.println("\nPECS правило (Producer Extends, Consumer Super):");
+        System.out.println("- <? extends T> для получения данных (Producer)");
+        System.out.println("- <? super T> для передачи данных (Consumer)");
+        System.out.println("- Не использовать wildcard, если и получаем, и отдаём");
+    }
+    
+    static void printAnimals(List<? extends Animal> animals) {
+        for (Animal a : animals) {
+            a.sound();
+        }
+    }
+    
+    static void addDog(List<? super Dog> list) {
+        list.add(new Dog());
+        System.out.println("Собака добавлена в список");
+    }
+}
