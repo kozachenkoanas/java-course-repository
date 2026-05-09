@@ -1,0 +1,34 @@
+package ru.oop.task4;
+
+/**
+ * Документирование кода в Java.
+ * Выполнен на практике для понимания комментариев в коде.
+ * 
+ * @author Анастасия Козаченко
+ * @version 1.0
+ * @see <a href="https://github.com/ваш-никнейм/java-course-repository">Репозиторий</a>
+ */
+public class JavadocExample {
+
+    /**
+     * Точка входа в программу.
+     * Демонстрирует вывод сообщения в консоль.
+     * 
+     * @param args аргументы командной строки (не используются)
+     */
+    public static void main(String[] args) {
+        System.out.println("Проверка документирования");
+    }
+
+    /**
+     * Метод для вычисления суммы двух целых чисел.
+     * 
+     * @param a первое слагаемое
+     * @param b второе слагаемое
+     * @return сумма чисел a и b
+     * @throws IllegalArgumentException если параметры некорректны (пример тега)
+     */
+    public int sum(int a, int b) {
+        return a + b;
+    }
+}
