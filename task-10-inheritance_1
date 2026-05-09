@@ -1,0 +1,37 @@
+package ru.oop.task10;
+
+public class ThisConstructorChainDemo {
+    int a;
+    int b;
+    int c;
+    int z;
+
+    public ThisConstructorChainDemo() {
+        this(0);
+    }
+    
+    public ThisConstructorChainDemo(int a) {
+        this(a, 0);
+    }
+
+    public ThisConstructorChainDemo(int a, int b) {
+        this(a, b, 0);
+    }
+
+    public ThisConstructorChainDemo(int a, int b, int c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.z = 1;
+    }
+    
+    public static void main(String[] args) {
+        ThisConstructorChainDemo obj1 = new ThisConstructorChainDemo();
+        ThisConstructorChainDemo obj2 = new ThisConstructorChainDemo(5);
+        ThisConstructorChainDemo obj3 = new ThisConstructorChainDemo(5, 10);
+        ThisConstructorChainDemo obj4 = new ThisConstructorChainDemo(5, 10, 15);
+        
+        System.out.println("obj1: a=" + obj1.a + ", b=" + obj1.b + ", c=" + obj1.c + ", z=" + obj1.z);
+        System.out.println("obj4: a=" + obj4.a + ", b=" + obj4.b + ", c=" + obj4.c + ", z=" + obj4.z);
+    }
+}
