@@ -1,0 +1,30 @@
+package ru.oop.task14;
+
+enum Priority {
+    LOW(1), MEDIUM(5), HIGH(10);
+    private final int level;
+    Priority(int level) {
+        this.level = level;
+    }
+    public int getLevel() {
+        return level;
+    }
+}
+
+enum Season {
+    WINTER, SPRING, SUMMER, AUTUMN;
+    public void welcome() {
+        System.out.println("привет! сейчас время года: " + this.name());
+    }
+}
+
+public class EnumWithFieldsDemo {
+    public static void main(String[] args) {
+        Priority myPriority = Priority.HIGH;
+        System.out.println("выбран приоритет: " + myPriority);
+        System.out.println("его числовое значение: " + myPriority.getLevel());
+        
+        Season currentSeason = Season.SPRING;
+        currentSeason.welcome();
+    }
+}
