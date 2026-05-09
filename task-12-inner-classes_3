@@ -1,0 +1,17 @@
+package ru.oop.task12;
+
+interface DBConfig {
+    String URL = "jdbc:mysql://localhost:3306/db";
+    class Helper {
+        public void showUrl() {
+            System.out.println("Connecting to: " + URL);
+        }
+    }
+}
+
+public class NestedClassInterfaceDemo {
+    public static void main(String[] args) {
+        DBConfig.Helper helper = new DBConfig.Helper();
+        helper.showUrl();
+    }
+}
