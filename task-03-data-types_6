@@ -1,0 +1,18 @@
+package ru.oop.task3;
+
+public class NarrowingConversionDemo {
+    public static void main(String[] args) {
+        double pi = 3.14159;
+        int truncatedPi = (int) pi;
+
+        long bigNumber = 500L;
+        short smallNumber = (short) bigNumber;
+
+        int sourceInt = 130;
+        byte resultByte = (byte) sourceInt;
+
+        System.out.println("1. double 3.14159 -> int: " + truncatedPi);
+        System.out.println("2. long 500 -> short: " + smallNumber);
+        System.out.println("3. int 130 -> byte (переполнение): " + resultByte);
+    }
+}
