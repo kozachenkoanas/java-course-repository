@@ -1,0 +1,43 @@
+package ru.oop.task24;
+
+public class MultiCatchDemo {
+    public static void main(String[] args) {
+        System.out.println("Multi-catch (несколько исключений в одном catch)\n");
+        
+        String[] inputs = {"123", "abc", null, "9999999999999"};
+        
+        for (String input : inputs) {
+            try {
+                System.out.print("Обработка '" + input + "': ");
+                processNumber(input);
+            } catch (NumberFormatException | NullPointerException e) {
+                System.out.println("Поймано: " + e.getClass().getSimpleName() + " - " + e.getMessage());
+            }
+        }
+        
+        System.out.println("\nИерархия исключений (нельзя смешивать):");
+        System.out.println("Неправильно: catch (Exception | NullPointerException e)");
+        System.out.println("Правильно: catch (NullPointerException | ArithmeticException e)");
+        System.out.println("Исключения не должны быть в иерархии друг с другом");
+        
+        System.out.println("\nПример с иерархией (правильный порядок):");
+        try {
+            int[] arr = new int[1];
+            arr[5] = 10;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Специфичное исключение: " + e);
+        } catch (RuntimeException e) {
+            System.out.println("Более общее: " + e);
+        } catch (Exception e) {
+            System.out.println("Самое общее: " + e);
+        }
+    }
+    
+    static void processNumber(String input) {
+        if (input == null) {
+            throw new NullPointerException("строка равна null");
+        }
+        int num = Integer.parseInt(input);
+        System.out.println("число = " + num);
+    }
+}
