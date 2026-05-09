@@ -1,0 +1,25 @@
+package ru.oop.task11;
+
+class Printer {
+    void print(String text) {
+        System.out.println("Текст: " + text);
+    }
+    void print(int number) {
+        System.out.println("Число: " + number);
+    }
+    void print(String text, int count) {
+        for (int i = 0; i < count; i++) {
+            System.out.print(text + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class MethodOverloadDemo {
+    public static void main(String[] args) {
+        Printer p = new Printer();
+        p.print("Анастасия");
+        p.print(19);
+        p.print("Java", 3);
+    }
+}
