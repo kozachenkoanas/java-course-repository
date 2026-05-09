@@ -1,0 +1,34 @@
+package ru.oop.task6;
+
+public class NullPointerAutounboxingDemo {
+    public static void main(String[] args) {
+        Integer intWrapper = null;
+        try {
+            int primitive = intWrapper;
+            System.out.println("Значение: " + primitive);
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException при автораспаковке Integer: " + e);
+        }
+        
+        Boolean boolWrapper = null;
+        try {
+            boolean primitive = boolWrapper;
+            System.out.println("Значение: " + primitive);
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException при автораспаковке Boolean: " + e);
+        }
+        
+        Integer a = null;
+        Integer b = 10;
+        try {
+            int sum = a + b;
+            System.out.println("Сумма: " + sum);
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException при операции с null-обёрткой: " + e);
+        }
+        
+        System.out.println();
+        System.out.println("Вывод: При автораспаковке null-объекта возникает NullPointerException");
+        System.out.println("Всегда проверяйте обёртки на null перед преобразованием в примитив");
+    }
+}
