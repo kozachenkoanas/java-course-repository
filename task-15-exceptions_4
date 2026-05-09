@@ -1,0 +1,23 @@
+package ru.oop.task15;
+
+public class ExceptionPropagationDemo {
+    public static void main(String[] args) {
+        System.out.println("шаг 1: попробуем поделить на ноль");
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("перехвачено! арифметическая ошибка. программа идёт дальше");
+        }
+        System.out.println("\nшаг 2: вызываем метод, который выбросит ошибку без обработки");
+        try {
+            causeCrash();
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException перехвачен в main");
+        }
+    }
+
+    static void causeCrash() {
+        String str = null;
+        System.out.println(str.length());
+    }
+}
