@@ -1,0 +1,17 @@
+package ru.oop.task3;
+
+public class VariableScopeAnalysis {
+    public static void main(String[] args) {
+        System.out.println("Вопрос: Какое значение будет в переменной c?");
+        System.out.println("int a = 1;");
+        System.out.println("{");
+        System.out.println("    int b = 2;");
+        System.out.println("}");
+        System.out.println("int c = a + b;");
+        System.out.println();
+        System.out.println("Ответ: Код НЕ СКОМПИЛИРУЕТСЯ");
+        System.out.println("Объяснение: Переменная b объявлена внутри блока {}");
+        System.out.println("и существует только внутри этого блока.");
+        System.out.println("За его пределами переменная b недоступна.");
+    }
+}
