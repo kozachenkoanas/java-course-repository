@@ -1,0 +1,61 @@
+package ru.oop.task23;
+
+import java.util.ArrayList;
+import java.util.List;
+
+class OldClass {
+    @Deprecated
+    public void oldMethod() {
+        System.out.println("Этот метод устарел");
+    }
+    
+    public void newMethod() {
+        System.out.println("Используйте этот метод");
+    }
+}
+
+class ParentClass {
+    public void display() {
+        System.out.println("Parent display");
+    }
+}
+
+class ChildClass extends ParentClass {
+    @Override
+    public void display() {
+        System.out.println("Child display");
+    }
+    
+    @SuppressWarnings("unchecked")
+    public void suppressWarningExample() {
+        List rawList = new ArrayList();
+        rawList.add("Без предупреждения");
+        System.out.println("Аннотация @SuppressWarnings подавила предупреждение о raw type");
+    }
+}
+
+public class AnnotationsDemo {
+    public static void main(String[] args) {
+        System.out.println("Аннотации в Java\n");
+        
+        System.out.println("1. @Override - проверяет, что метод переопределяет метод суперкласса");
+        ChildClass child = new ChildClass();
+        child.display();
+        
+        System.out.println("\n2. @Deprecated - помечает элемент как устаревший");
+        OldClass old = new OldClass();
+        old.oldMethod();
+        old.newMethod();
+        
+        System.out.println("\n3. @SuppressWarnings - подавляет предупреждения компилятора");
+        ChildClass demo = new ChildClass();
+        demo.suppressWarningExample();
+        
+        System.out.println("\nДругие встроенные аннотации:");
+        System.out.println("@FunctionalInterface - для функциональных интерфейсов");
+        System.out.println("@SafeVarargs - для varargs методов");
+        System.out.println("@Retention - задаёт время жизни аннотации");
+        System.out.println("@Target - задаёт цели применения аннотации");
+        System.out.println("@Documented - включает аннотацию в Javadoc");
+    }
+}
