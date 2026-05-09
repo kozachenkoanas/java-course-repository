@@ -1,0 +1,42 @@
+package ru.oop.task17;
+
+public class StringMethodsDemo {
+    public static void main(String[] args) {
+        String original = "   Java Programming is Powerful!   ";
+        System.out.println("Исходная строка: '" + original + "'\n");
+        
+        int len = original.length();
+        System.out.println("1. Длина: " + len);
+        
+        String trimmed = original.trim();
+        System.out.println("2. trim(): '" + trimmed + "'");
+        
+        String lower = trimmed.toLowerCase();
+        System.out.println("3. toLowerCase(): " + lower);
+        
+        boolean hasJava = trimmed.contains("Java");
+        System.out.println("4. contains('Java'): " + hasJava);
+        
+        String sub = trimmed.substring(0, 4);
+        System.out.println("5. substring(0,4): " + sub);
+        
+        String replaced = trimmed.replace("Powerful", "Awesome");
+        System.out.println("6. replace: " + replaced);
+        
+        char firstChar = trimmed.charAt(0);
+        System.out.println("7. charAt(0): " + firstChar);
+        
+        int index = trimmed.indexOf("Programming");
+        System.out.println("8. indexOf('Programming'): " + index);
+        
+        boolean equal = trimmed.equalsIgnoreCase("java programming is powerful!");
+        System.out.println("9. equalsIgnoreCase: " + equal);
+        
+        String[] words = trimmed.split(" ");
+        System.out.print("10. split: ");
+        for (String word : words) {
+            System.out.print("[" + word + "] ");
+        }
+        System.out.println();
+    }
+}
