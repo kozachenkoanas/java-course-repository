@@ -1,0 +1,52 @@
+package ru.oop.task31;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class TryFinallyOnlyDemo {
+    public static void main(String[] args) {
+        System.out.println("Конструкция try с только finally\n");
+        
+        System.out.println("Можно ли использовать try без catch и finally?");
+        System.out.println("НЕТ, try { } без catch или finally - ОШИБКА КОМПИЛЯЦИИ\n");
+        
+        System.out.println("Можно ли использовать try с двумя finally?");
+        System.out.println("НЕТ, finally может быть только один\n");
+        
+        System.out.println("Правильные конструкции:");
+        System.out.println("1. try { } catch (Exception e) { }");
+        System.out.println("2. try { } finally { }");
+        System.out.println("3. try { } catch (Exception e) { } finally { }");
+        
+        System.out.println("\nПример try-finally без catch:");
+        try {
+            System.out.println("Выполняем операцию, которая может бросить исключение");
+            int result = 10 / 2;
+            System.out.println("Результат: " + result);
+        } finally {
+            System.out.println("finally выполнится всегда (даже если было исключение)");
+        }
+        
+        System.out.println("\nПример try-finally с IOException (освобождение ресурсов):");
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream("test.txt");
+            System.out.println("Файл открыт");
+        } catch (IOException e) {
+            System.out.println("Ошибка открытия файла: " + e.getMessage());
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                    System.out.println("Ресурс освобождён");
+                } catch (IOException e) {
+                    System.out.println("Ошибка при закрытии: " + e.getMessage());
+                }
+            }
+        }
+        
+        System.out.println("\nС Java 7+ лучше использовать try-with-resources:");
+        System.out.println("try (FileInputStream fis2 = new FileInputStream(\"test.txt\")) { }");
+        System.out.println("Автоматически закрывает ресурсы, не требуя finally");
+    }
+}
