@@ -1,0 +1,53 @@
+package ru.oop.task27;
+
+class Parent {
+    public void display() {
+        System.out.println("Parent display");
+    }
+    
+    public void show(String message) {
+        System.out.println("Parent show: " + message);
+    }
+}
+
+class Child extends Parent {
+    @Override
+    public void display() {
+        System.out.println("Child display");
+    }
+    
+    // Ошибка: метод не переопределяет метод суперкласса
+    // @Override
+    // public void show() {
+    //     System.out.println("Child show");
+    // }
+    
+    @Override
+    public void show(String message) {
+        System.out.println("Child show: " + message);
+    }
+}
+
+public class OverrideErrorDemo {
+    public static void main(String[] args) {
+        System.out.println("@Override помогает обнаружить ошибки\n");
+        
+        System.out.println("Если раскомментировать код в классе Child:");
+        System.out.println("@Override");
+        System.out.println("public void show() { ... }");
+        System.out.println("Компилятор выдаст ошибку, потому что метод show()");
+        System.out.println("не переопределяет никакой метод суперкласса (нет параметров)");
+        
+        System.out.println("\nПравильное переопределение:");
+        Child child = new Child();
+        child.display();
+        child.show("Привет");
+        
+        System.out.println("\nКакие ошибки помогает найти @Override:");
+        System.out.println("1. Неправильное имя метода");
+        System.out.println("2. Неправильные параметры метода");
+        System.out.println("3. Неправильный тип возвращаемого значения");
+        System.out.println("4. Метод помечен как final в суперклассе");
+        System.out.println("5. Метод private в суперклассе");
+    }
+}
