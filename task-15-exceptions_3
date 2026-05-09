@@ -1,0 +1,19 @@
+package ru.oop.task15;
+
+public class NestedTryDemo {
+    public static void main(String[] args) {
+        try {
+            System.out.println("внешний блок начинает");
+            try {
+                int[] arr = {1};
+                System.out.println(arr[5]);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("внутренний catch поймал выход за границы массива");
+            }
+            int result = 10 / 2;
+            System.out.println("внешний блок: результат " + result);
+        } catch (Exception e) {
+            System.out.println("внешний catch: сюда не попали");
+        }
+    }
+}
