@@ -1,0 +1,28 @@
+package ru.oop.task7;
+
+public class InfiniteLoopsDemo {
+    public static void main(String[] args) {
+        System.out.println("Примеры бесконечных циклов:");
+        System.out.println("1. while (true) { }");
+        System.out.println("2. while (x == 1) { }  (если x не меняется)");
+        System.out.println("3. do { } while (true);");
+        System.out.println("4. boolean flag = true; while (flag) { } (если flag не меняется)");
+        System.out.println();
+        
+        int counter = 0;
+        while (true) {
+            System.out.println("Итерация " + counter);
+            counter++;
+            if (counter >= 3) {
+                System.out.println("Выход по break");
+                break;
+            }
+        }
+        
+        int i = 0;
+        do {
+            System.out.println("do-while выполнится хотя бы раз");
+            i++;
+        } while (i < 0);
+    }
+}
