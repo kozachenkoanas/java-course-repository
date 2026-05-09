@@ -1,0 +1,16 @@
+package ru.oop.task25;
+
+public class StaticInitExceptionDemo {
+    final static int START_COUNTER;
+    
+    static {
+        System.out.println("Статический блок инициализации");
+        System.out.println("Попытка распарсить 'Y-'");
+        START_COUNTER = Integer.parseInt("Y-");
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Hello");
+        System.out.println("Это сообщение не будет выведено");
+    }
+}
