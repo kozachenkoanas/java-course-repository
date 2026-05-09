@@ -1,0 +1,36 @@
+package ru.oop.task15;
+
+class InvalidAgeException extends Exception {
+    public InvalidAgeException() {
+        super("введен некорректный возраст.");
+    }
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+    public InvalidAgeException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            checkAge(-5);
+        } catch (InvalidAgeException e) {
+            System.out.println("поймано собственное исключение: " + e.getMessage());
+        }
+        
+        try {
+            checkAge(19);
+        } catch (InvalidAgeException e) {
+            System.out.println("ошибка: " + e.getMessage());
+        }
+    }
+
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 0 || age > 150) {
+            throw new InvalidAgeException("возраст " + age + " недопустим для регистрации");
+        }
+        System.out.println("возраст " + age + " принят");
+    }
+}
