@@ -1,0 +1,39 @@
+package ru.oop.task21;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+public class FlushMethodDemo {
+    public static void main(String[] args) {
+        System.out.println("Метод flush() - принудительная запись буферизованных данных\n");
+        
+        System.out.println("Что делает flush():");
+        System.out.println("1. Принудительно записывает данные из буфера в целевое устройство");
+        System.out.println("2. Очищает буфер после записи");
+        System.out.println("3. Гарантирует, что данные действительно записаны, а не лежат в буфере");
+        
+        System.out.println("\nПример использования:");
+        
+        String data = "Пример текста для записи в файл\n";
+        byte[] bytes = data.getBytes();
+        
+        try (OutputStream out = new FileOutputStream("test_flush.txt")) {
+            out.write(bytes);
+            out.flush();
+            System.out.println("Данные записаны и буфер очищен (flush)");
+        } catch (IOException e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+        
+        System.out.println("\nКогда нужен flush():");
+        System.out.println("- При работе с сетевыми потоками (отправить данные сразу)");
+        System.out.println("- При записи в файл перед выключением программы");
+        System.out.println("- В интерактивных приложениях (чат, консоль)");
+        
+        System.out.println("\nБез flush() данные могут:");
+        System.out.println("- Остаться в буфере и не записаться");
+        System.out.println("- Потеряться при закрытии потока");
+        System.out.println("- Записаться с задержкой");
+    }
+}
