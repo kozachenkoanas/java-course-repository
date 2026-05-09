@@ -1,0 +1,43 @@
+package ru.oop.task9;
+
+class BaseClass {
+    private String privateInfo = "PRIVATE: Видно только в BaseClass";
+    String defaultInfo = "DEFAULT: Видно в этом же пакете";
+    protected String protectedInfo = "PROTECTED: Видно в пакете и наследникам";
+    public String publicInfo = "PUBLIC: Видно всем";
+    public static int objectCount = 0;
+    public final String GRADE = "A+";
+
+    public BaseClass() {
+        objectCount++;
+    }
+    public String getPrivateInfo() {
+        return privateInfo;
+    }
+}
+
+class ChildClass extends BaseClass {
+    public void showInheritedFields() {
+        System.out.println("Проверка внутри наследника");
+        System.out.println(defaultInfo);
+        System.out.println(protectedInfo);
+        System.out.println(publicInfo);
+    }
+}
+
+public class SpecifiersDemo {
+    public static void main(String[] args) {
+        BaseClass obj1 = new BaseClass();
+        BaseClass obj2 = new BaseClass();
+        System.out.println("Проверка Static поля");
+        System.out.println("Создано объектов: " + BaseClass.objectCount);
+        System.out.println("\nПроверка доступа извне");
+        System.out.println("Через геттер: " + obj1.getPrivateInfo());
+        System.out.println(obj1.defaultInfo);
+        System.out.println(obj1.protectedInfo);
+        System.out.println(obj1.publicInfo);
+        System.out.println("\nКонстанта GRADE: " + obj1.GRADE);
+        ChildClass child = new ChildClass();
+        child.showInheritedFields();
+    }
+}
