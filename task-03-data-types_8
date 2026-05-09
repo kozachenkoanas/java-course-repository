@@ -1,0 +1,12 @@
+package ru.oop.task3;
+
+public class TypeInferenceDemo {
+    public static void main(String[] args) {
+        var age = 19;
+        var name = "Анастасия";
+        var temperature = 36.6;
+        var messageBuilder = new StringBuilder("Привет, ");
+        messageBuilder.append(name);
+        System.out.println(messageBuilder.toString() + "! Тебе " + age + " лет.");
+    }
+}
