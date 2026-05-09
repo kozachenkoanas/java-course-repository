@@ -1,0 +1,30 @@
+package ru.oop.task12;
+
+class Necklace {
+    private String secretCode = "silver-925";
+    public String material = "серебро";
+
+    class Gem {
+        private String gemType = "фианит";
+        public void showSecrets() {
+            System.out.println("внутренний класс видит секрет ожерелья: " + secretCode);
+            System.out.println("материал ожерелья: " + material);
+        }
+    }
+
+    public void checkGem() {
+        Gem g = new Gem();
+        System.out.println("внешний класс проверяет камень: " + g.gemType);
+    }
+}
+
+public class InnerClassAccessDemo {
+    public static void main(String[] args) {
+        Necklace myNecklace = new Necklace();
+        Necklace.Gem myGem = myNecklace.new Gem();
+        System.out.println("тест доступа изнутри");
+        myGem.showSecrets();
+        System.out.println("\nтест доступа снаружи");
+        myNecklace.checkGem();
+    }
+}
