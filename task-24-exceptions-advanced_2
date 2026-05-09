@@ -1,0 +1,30 @@
+package ru.oop.task24;
+
+public class FinalInCatchDemo {
+    public static void main(String[] args) {
+        System.out.println("final в catch блоке\n");
+        
+        try {
+            int result = 10 / 0;
+        } catch (final ArithmeticException e) {
+            System.out.println("Поймано исключение: " + e);
+            System.out.println("Переменная e объявлена как final, её нельзя изменить");
+            System.out.println("e.getMessage() = " + e.getMessage());
+            
+            // e = new ArithmeticException(); // ОШИБКА! Нельзя изменить final переменную
+        }
+        
+        System.out.println("\nЗачем нужен final в catch?");
+        System.out.println("1. Гарантирует, что ссылка на исключение не изменится");
+        System.out.println("2. Позволяет использовать исключение в лямбда-выражениях");
+        System.out.println("3. Улучшает читаемость кода");
+        
+        System.out.println("\nПример с лямбдой (Java 8+):");
+        try {
+            throw new RuntimeException("Тест");
+        } catch (final RuntimeException e) {
+            Runnable r = () -> System.out.println("Поймано: " + e.getMessage());
+            r.run();
+        }
+    }
+}
