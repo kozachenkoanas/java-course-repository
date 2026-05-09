@@ -1,0 +1,33 @@
+package ru.oop.task20;
+
+public class TextBlocksDemo {
+    public static void main(String[] args) {
+        String json = """
+            {
+              "name": "Анастасия",
+              "age": 19
+            }
+            """;
+        System.out.println("Text Block (JSON):");
+        System.out.println(json);
+        
+        String sql = """
+            SELECT id, name, email
+            FROM users
+            WHERE age > 18
+            """;
+        System.out.println("Text Block (SQL):");
+        System.out.println(sql);
+        
+        String html = """
+            <!DOCTYPE html>
+            <html>
+              <body>
+                <h1>Привет</h1>
+              </body>
+            </html>
+            """;
+        System.out.println("Text Block (HTML):");
+        System.out.println(html);
+    }
+}
