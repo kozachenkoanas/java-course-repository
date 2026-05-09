@@ -1,0 +1,42 @@
+package ru.oop.task27;
+
+class Parent {
+    public static void staticMethod() {
+        System.out.println("Parent.staticMethod()");
+    }
+    
+    public void instanceMethod() {
+        System.out.println("Parent.instanceMethod()");
+    }
+}
+
+class Child extends Parent {
+    public static void staticMethod() {
+        System.out.println("Child.staticMethod()");
+    }
+    
+    @Override
+    public void instanceMethod() {
+        System.out.println("Child.instanceMethod()");
+    }
+}
+
+public class StaticPolymorphismDemo {
+    public static void main(String[] args) {
+        System.out.println("Почему динамический полиморфизм не работает со static?\n");
+        
+        Parent ref = new Child();
+        
+        System.out.println("Вызов через ссылку типа Parent, но объект Child:");
+        System.out.println("  ref.instanceMethod():");
+        ref.instanceMethod();
+        
+        System.out.println("  ref.staticMethod():");
+        ref.staticMethod();
+        
+        System.out.println("\nОбъяснение:");
+        System.out.println("Статические методы принадлежат классу, а не объекту.");
+        System.out.println("Они связываются на этапе компиляции, а не во время выполнения.");
+        System.out.println("Поэтому вызывается Parent.staticMethod(), а не Child.staticMethod()");
+    }
+}
