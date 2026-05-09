@@ -1,0 +1,37 @@
+package ru.oop.task10;
+
+class Device {
+    String brand = "Universal Brand";
+    public Device(String brand) {
+        this.brand = brand;
+        System.out.println("конструктор Device вызван");
+    }
+    void powerOn() {
+        System.out.println("устройство включается");
+    }
+}
+
+class Smartphone extends Device {
+    String brand = "SmartBrand";
+    public Smartphone(String model) {
+        super(model);
+        System.out.println("конструктор Smartphone вызван");
+    }
+    @Override
+    void powerOn() {
+        super.powerOn();
+        System.out.println("экран телефона включается");
+    }
+    void showBrands() {
+        System.out.println("бренд подкласса: " + this.brand);
+        System.out.println("бренд суперкласса: " + super.brand);
+    }
+}
+
+public class SuperKeywordDemo {
+    public static void main(String[] args) {
+        Smartphone myPhone = new Smartphone("Apple");
+        myPhone.powerOn();
+        myPhone.showBrands();
+    }
+}
