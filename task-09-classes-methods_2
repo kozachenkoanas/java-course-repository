@@ -1,0 +1,25 @@
+package ru.oop.task9;
+
+public class StaticMethodCallDemo {
+    public static int a = 1;
+    public static int b;
+    
+    public static void printVars() {
+        System.out.println(a);
+        System.out.println(b);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("Способы вызова printVars():");
+        
+        System.out.print("1. Прямой вызов: ");
+        printVars();
+        
+        System.out.print("2. Через имя класса: ");
+        StaticMethodCallDemo.printVars();
+        
+        StaticMethodCallDemo obj = new StaticMethodCallDemo();
+        System.out.print("3. Через объект (не рекомендуется): ");
+        obj.printVars();
+    }
+}
