@@ -1,0 +1,26 @@
+package ru.oop.task20;
+
+import java.util.StringJoiner;
+
+public class StringJoinerDemo {
+    public static void main(String[] args) {
+        StringJoiner joiner = new StringJoiner(", ");
+        joiner.add("яблоко");
+        joiner.add("груша");
+        joiner.add("слива");
+        System.out.println("StringJoiner: " + joiner);
+        
+        StringJoiner withBrackets = new StringJoiner(", ", "[", "]");
+        withBrackets.add("красный");
+        withBrackets.add("зелёный");
+        withBrackets.add("синий");
+        System.out.println("С префиксом/суффиксом: " + withBrackets);
+        
+        String joined = String.join(" - ", "A", "B", "C");
+        System.out.println("String.join: " + joined);
+        
+        String[] fruits = {"яблоко", "груша", "апельсин"};
+        String result = String.join(", ", fruits);
+        System.out.println("String.join с массивом: " + result);
+    }
+}
