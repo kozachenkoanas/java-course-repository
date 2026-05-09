@@ -1,0 +1,97 @@
+package ru.oop.task1;
+
+abstract class Shape {
+    public abstract double getArea();
+    public void displayArea() {
+        System.out.println("Площадь фигуры: " + getArea());
+    }
+}
+
+class Rectangle extends Shape {
+    private double width;
+    private double height;
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+    public void setWidth(double width) {
+        if (width > 0) this.width = width;
+    }
+    public void setHeight(double height) {
+        if (height > 0) this.height = height;
+    }
+    public double getWidth() { return width; }
+    public double getHeight() { return height; }
+    @Override
+    public double getArea() { return width * height; }
+}
+
+class Square extends Shape {
+    private double side;
+    public Square(double side) { this.side = side; }
+    public void setSide(double side) {
+        if (side > 0) this.side = side;
+    }
+    public double getSide() { return side; }
+    @Override
+    public double getArea() { return side * side; }
+}
+
+class Circle extends Shape {
+    private double radius;
+    public Circle(double radius) { this.radius = radius; }
+    public void setRadius(double radius) {
+        if (radius > 0) this.radius = radius;
+    }
+    public double getRadius() { return radius; }
+    @Override
+    public double getArea() { return Math.PI * radius * radius; }
+}
+
+public class Main {
+    public static void printArea(Shape shape) {
+        System.out.println("Результат вычисления: " + shape.getArea());
+        shape.displayArea();
+        System.out.println("---");
+    }
+    public static void processRectangle(Rectangle rect) {
+        double originalWidth = rect.getWidth();
+        double originalHeight = rect.getHeight();
+        System.out.println("Обработка прямоугольника:");
+        System.out.println("  Исходные размеры: " + originalWidth + " x " + originalHeight);
+        rect.setWidth(10);
+        rect.setHeight(5);
+        System.out.println("  После изменения: " + rect.getWidth() + " x " + rect.getHeight());
+        System.out.println("  Площадь изменилась с " + (originalWidth * originalHeight) + " на " + rect.getArea());
+    }
+    public static void main(String[] args) {
+        System.out.println("Принцип подстановки Лисков (LSP)\n");
+        Rectangle rectangle = new Rectangle(5, 4);
+        System.out.println("1. Прямоугольник 5x4:");
+        printArea(rectangle);
+        Square square = new Square(4);
+        System.out.println("2. Квадрат со стороной 4:");
+        printArea(square);
+        Circle circle = new Circle(3);
+        System.out.println("3. Круг радиусом 3:");
+        printArea(circle);
+        System.out.println("4. Демонстрация подстановки (LSP):\n");
+        Shape[] shapes = { new Rectangle(2, 3), new Square(5), new Circle(2.5), new Rectangle(7, 2) };
+        for (int i = 0; i < shapes.length; i++) {
+            System.out.print("Фигура " + (i + 1) + ": ");
+            printArea(shapes[i]);
+        }
+        System.out.println("5. Работа только с прямоугольниками:");
+        Rectangle rect1 = new Rectangle(3, 6);
+        processRectangle(rect1);
+        System.out.println("\n6. Увеличение площади разных фигур:");
+        Shape myShape = new Rectangle(2, 3);
+        System.out.println("  Было: " + myShape.getArea());
+        myShape = new Rectangle(4, 6);
+        System.out.println("  Стало: " + myShape.getArea());
+        myShape = new Square(3);
+        System.out.println("  Квадрат был 3x3 (площадь 9)");
+        myShape = new Square(5);
+        System.out.println("  Квадрат стал 5x5 (площадь 25)");
+    }
+}
