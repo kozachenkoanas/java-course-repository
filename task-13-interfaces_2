@@ -1,0 +1,28 @@
+package ru.oop.task13;
+
+interface Radio {
+    default void start() {
+        System.out.println("радио включено");
+    }
+}
+
+interface Engine {
+    default void start() {
+        System.out.println("двигатель работает");
+    }
+}
+
+class Car implements Radio, Engine {
+    @Override
+    public void start() {
+        System.out.println("машина готова к движению");
+        Engine.super.start();
+    }
+}
+
+public class DefaultMethodConflictDemo {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        myCar.start();
+    }
+}
