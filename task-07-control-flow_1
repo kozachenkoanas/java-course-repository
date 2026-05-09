@@ -1,0 +1,17 @@
+package ru.oop.task7;
+
+public class TernaryOperatorDemo {
+    public static void main(String[] args) {
+        int a = 2;
+        int i = (a == 1) ? 1 : (a == 2) ? 2 : 3;
+        System.out.println("a = " + a + ", результат = " + i);
+        
+        int a2 = 1;
+        int i2 = (a2 == 1) ? 1 : (a2 == 2) ? 2 : 3;
+        System.out.println("a = " + a2 + ", результат = " + i2);
+        
+        int a3 = 5;
+        int i3 = (a3 == 1) ? 1 : (a3 == 2) ? 2 : 3;
+        System.out.println("a = " + a3 + ", результат = " + i3);
+    }
+}
