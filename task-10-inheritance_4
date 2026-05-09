@@ -1,0 +1,40 @@
+package ru.oop.task10;
+
+class Computer {
+    public final void startOS() {
+        System.out.println("загрузка операционной системы");
+    }
+    public void installApp() {
+        System.out.println("установка обычного приложения");
+    }
+}
+
+class Laptop extends Computer {
+    @Override
+    public void installApp() {
+        System.out.println("установка приложения на ноутбук");
+    }
+}
+
+final class DatabaseConnector {
+    public void connect() {
+        System.out.println("подключение установлено");
+    }
+}
+
+class DataManager {
+    private DatabaseConnector connector = new DatabaseConnector();
+    public void work() {
+        connector.connect();
+    }
+}
+
+public class FinalMethodDemo {
+    public static void main(String[] args) {
+        Laptop myLaptop = new Laptop();
+        myLaptop.startOS();
+        myLaptop.installApp();
+        DataManager manager = new DataManager();
+        manager.work();
+    }
+}
